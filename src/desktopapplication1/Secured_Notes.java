@@ -160,7 +160,7 @@ public class Secured_Notes extends FrameView {
         jTextArea2.setName("jTextArea2"); // NOI18N
         jScrollPane2.setViewportView(jTextArea2);
 
-        mainPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 68));
+        mainPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 38, -1, 60));
 
         jTextField1.setBackground(resourceMap.getColor("jTextField1.background")); // NOI18N
         jTextField1.setEditable(false);
