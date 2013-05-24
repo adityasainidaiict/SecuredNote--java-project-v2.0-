@@ -12,6 +12,7 @@ import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.Timer;
@@ -204,6 +205,8 @@ public class Secured_Notes extends FrameView {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+char os[] = new char[1000];
+int ns[] = new int[1000];
 int count = 0;
     @Action
 
@@ -230,17 +233,30 @@ if(jTextArea1.getText().equals(""))
  {
     
     try {
-String m = jTextArea2.getText();
+String m = jTextArea2.getText() + ".txt";
+File file = new File("C:/securednotes/" +m);
 
-    BufferedWriter fileOut = new BufferedWriter(new FileWriter(m + ".txt"));
+    BufferedWriter fileOut = new BufferedWriter(new FileWriter(file));
     String myString1 =jTextArea1.getText();
     String myString2 = myString1.replace("\r", "\n");
+    os = myString2.toCharArray();
+                for(int i =0 ; i< os.length;i++){
+ns[i] = os[i] ;
+
+     //System.out.print(ns[i]);
+fileOut.write(Integer.toString(ns[i]));
+                }
+
+     fileOut.close();
 
 
-    fileOut.write(myString2);
-    fileOut.close();
-jTextArea1.setText("");
+
+ jTextArea1.setText("");
  jTextArea2.setText("");
+
+
+
+    
     } catch (IOException ioe) {
     System.out.print("error");
 }
@@ -252,6 +268,7 @@ jTextArea1.setText("");
     @Action
     public void reset() {
 jTextArea1.setText(" ");
+jTextArea2.setText(" ");
     }
 
     @Action

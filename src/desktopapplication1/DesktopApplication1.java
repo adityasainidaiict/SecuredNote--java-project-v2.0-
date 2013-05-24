@@ -4,6 +4,8 @@
 
 package desktopapplication1;
 
+import java.io.File;
+import javax.swing.JOptionPane;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -39,6 +41,16 @@ public class DesktopApplication1 extends SingleFrameApplication {
      * Main method launching the application.
      */
     public static void main(String[] args) {
+        File file = new File("C:\\securednotes");
+	if (!file.exists()) {
+		if (file.mkdir()) {
+			//System.out.println("Directory is created!");
+		} else {
+			//System.out.println("Failed to create directory!");
+
+                }
+	}
+
         launch(DesktopApplication1.class, args);
     }
 }

@@ -43,7 +43,7 @@
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-              <action class="desktopapplication1.DesktopApplication1View" id="reset" methodName="reset"/>
+              <action class="desktopapplication1.Secured_Notes" id="reset" methodName="reset"/>
             </Property>
             <Property name="background" type="java.awt.Color" resourceKey="jButton2.background"/>
             <Property name="foreground" type="java.awt.Color" resourceKey="jButton2.foreground"/>
