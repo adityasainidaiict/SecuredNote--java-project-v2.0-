@@ -4,6 +4,8 @@
 
 package desktopapplication1;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -15,8 +17,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.Timer;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -75,6 +79,8 @@ public class Secured_Notes extends FrameView {
         });
     }
 
+
+
     @Action
     public void showAboutBox() {
         if (aboutBox == null) {
@@ -103,11 +109,13 @@ public class Secured_Notes extends FrameView {
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         jDialog1 = new javax.swing.JDialog();
+        jSeparator1 = new javax.swing.JSeparator();
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getResourceMap(Secured_Notes.class);
         mainPanel.setBackground(resourceMap.getColor("mainPanel.background")); // NOI18N
@@ -115,7 +123,7 @@ public class Secured_Notes extends FrameView {
         mainPanel.setMinimumSize(new java.awt.Dimension(300, 200));
         mainPanel.setName("mainPanel"); // NOI18N
         mainPanel.setPreferredSize(new java.awt.Dimension(450, 300));
-        mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mainPanel.setLayout(null);
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getActionMap(Secured_Notes.class, this);
         jButton1.setAction(actionMap.get("click")); // NOI18N
@@ -123,25 +131,41 @@ public class Secured_Notes extends FrameView {
         jButton1.setForeground(resourceMap.getColor("jButton1.foreground")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
+        jButton1.setSelectedIcon(resourceMap.getIcon("jButton1.selectedIcon")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        mainPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 261, 108, 27));
+        try {
+            Image img = ImageIO.read(getClass().getResource("resources/sa.jpg"));
+            jButton1.setIcon(new ImageIcon(img));
+        } catch (IOException ex) {
+        }
+        mainPanel.add(jButton1);
+        jButton1.setBounds(12, 261, 108, 27);
 
         jButton2.setAction(actionMap.get("reset")); // NOI18N
         jButton2.setBackground(resourceMap.getColor("jButton2.background")); // NOI18N
         jButton2.setForeground(resourceMap.getColor("jButton2.foreground")); // NOI18N
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
         jButton2.setName("jButton2"); // NOI18N
-        mainPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 260, 109, 29));
+        jButton2.setSelectedIcon(resourceMap.getIcon("jButton2.selectedIcon")); // NOI18N
+        try {
+            Image img = ImageIO.read(getClass().getResource("resources/re.jpg"));
+            jButton2.setIcon(new ImageIcon(img));
+        } catch (IOException ex) {
+        }
+        mainPanel.add(jButton2);
+        jButton2.setBounds(207, 260, 109, 29);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         jTextArea1.setBackground(resourceMap.getColor("jTextArea1.background")); // NOI18N
         jTextArea1.setColumns(5);
+        jTextArea1.setFont(resourceMap.getFont("jTextArea1.font")); // NOI18N
+        jTextArea1.setForeground(resourceMap.getColor("jTextArea1.foreground")); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setAutoscrolls(false);
@@ -150,7 +174,8 @@ public class Secured_Notes extends FrameView {
         jTextArea1.setPreferredSize(new java.awt.Dimension(200, 150));
         jScrollPane1.setViewportView(jTextArea1);
 
-        mainPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 13, 368, 201));
+        mainPanel.add(jScrollPane1);
+        jScrollPane1.setBounds(112, 13, 380, 220);
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
@@ -161,15 +186,20 @@ public class Secured_Notes extends FrameView {
         jTextArea2.setName("jTextArea2"); // NOI18N
         jScrollPane2.setViewportView(jTextArea2);
 
-        mainPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 38, -1, 60));
+        mainPanel.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 38, 86, 60);
 
-        jTextField1.setBackground(resourceMap.getColor("jTextField1.background")); // NOI18N
-        jTextField1.setEditable(false);
-        jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
-        jTextField1.setAlignmentY(0.1F);
-        jTextField1.setMaximumSize(new java.awt.Dimension(6, 22));
-        jTextField1.setName("jTextField1"); // NOI18N
-        mainPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, -1, -1));
+        jLabel2.setIcon(resourceMap.getIcon("jLabel2.icon")); // NOI18N
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
+        mainPanel.add(jLabel2);
+        jLabel2.setBounds(10, 6, 90, 30);
+
+        jLabel1.setIcon(resourceMap.getIcon("jLabel1.icon")); // NOI18N
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+        mainPanel.add(jLabel1);
+        jLabel1.setBounds(0, -50, 760, 570);
 
         menuBar.setName("menuBar"); // NOI18N
 
@@ -195,6 +225,8 @@ public class Secured_Notes extends FrameView {
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        jSeparator1.setName("jSeparator1"); // NOI18N
 
         setComponent(mainPanel);
         setMenuBar(menuBar);
@@ -282,11 +314,13 @@ jTextArea2.setText(" ");
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
