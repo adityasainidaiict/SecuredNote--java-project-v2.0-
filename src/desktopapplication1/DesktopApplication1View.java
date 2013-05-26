@@ -224,7 +224,7 @@ public class DesktopApplication1View extends FrameView {
     String myString1 =jTextArea1.getText();
     String myString2 = myString1.replace("\r", "\n");
 
-    System.out.println(myString2);
+//    System.out.println(myString2);
 
     fileOut.write(myString2);
     fileOut.close();

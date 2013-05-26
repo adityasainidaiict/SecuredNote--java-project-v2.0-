@@ -13,15 +13,19 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigInteger;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -110,12 +114,13 @@ public class Secured_Notes extends FrameView {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         jDialog1 = new javax.swing.JDialog();
         jSeparator1 = new javax.swing.JSeparator();
+        jFileChooser2 = new javax.swing.JFileChooser();
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getResourceMap(Secured_Notes.class);
         mainPanel.setBackground(resourceMap.getColor("mainPanel.background")); // NOI18N
@@ -143,7 +148,7 @@ public class Secured_Notes extends FrameView {
         } catch (IOException ex) {
         }
         mainPanel.add(jButton1);
-        jButton1.setBounds(12, 261, 108, 27);
+        jButton1.setBounds(10, 270, 108, 27);
 
         jButton2.setAction(actionMap.get("reset")); // NOI18N
         jButton2.setBackground(resourceMap.getColor("jButton2.background")); // NOI18N
@@ -157,7 +162,7 @@ public class Secured_Notes extends FrameView {
         } catch (IOException ex) {
         }
         mainPanel.add(jButton2);
-        jButton2.setBounds(207, 260, 109, 29);
+        jButton2.setBounds(220, 270, 109, 29);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setName("jScrollPane1"); // NOI18N
@@ -175,19 +180,22 @@ public class Secured_Notes extends FrameView {
         jScrollPane1.setViewportView(jTextArea1);
 
         mainPanel.add(jScrollPane1);
-        jScrollPane1.setBounds(112, 13, 380, 220);
+        jScrollPane1.setBounds(112, 13, 460, 230);
 
+        jScrollPane2.setHorizontalScrollBar(null);
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
         jTextArea2.setBackground(resourceMap.getColor("jTextArea2.background")); // NOI18N
         jTextArea2.setColumns(10);
+        jTextArea2.setFont(resourceMap.getFont("jTextArea2.font")); // NOI18N
+        jTextArea2.setForeground(resourceMap.getColor("jTextArea1.foreground"));
         jTextArea2.setRows(3);
         jTextArea2.setAlignmentY(0.1F);
         jTextArea2.setName("jTextArea2"); // NOI18N
         jScrollPane2.setViewportView(jTextArea2);
 
         mainPanel.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 38, 86, 60);
+        jScrollPane2.setBounds(10, 38, 90, 60);
 
         jLabel2.setIcon(resourceMap.getIcon("jLabel2.icon")); // NOI18N
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
@@ -195,11 +203,21 @@ public class Secured_Notes extends FrameView {
         mainPanel.add(jLabel2);
         jLabel2.setBounds(10, 6, 90, 30);
 
-        jLabel1.setIcon(resourceMap.getIcon("jLabel1.icon")); // NOI18N
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
-        mainPanel.add(jLabel1);
-        jLabel1.setBounds(0, -50, 760, 570);
+        jButton3.setAction(actionMap.get("openfile")); // NOI18N
+        jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
+        jButton3.setName("jButton3"); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        try {
+            Image img = ImageIO.read(getClass().getResource("resources/no.jpg"));
+            jButton3.setIcon(new ImageIcon(img));
+        } catch (IOException ex) {
+        }
+        mainPanel.add(jButton3);
+        jButton3.setBounds(10, 170, 90, 30);
 
         menuBar.setName("menuBar"); // NOI18N
 
@@ -228,6 +246,13 @@ public class Secured_Notes extends FrameView {
 
         jSeparator1.setName("jSeparator1"); // NOI18N
 
+        jFileChooser2.setName("jFileChooser2"); // NOI18N
+        jFileChooser2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFileChooser2ActionPerformed(evt);
+            }
+        });
+
         setComponent(mainPanel);
         setMenuBar(menuBar);
     }// </editor-fold>//GEN-END:initComponents
@@ -237,6 +262,14 @@ public class Secured_Notes extends FrameView {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jFileChooser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFileChooser2ActionPerformed
 char os[] = new char[1000];
 int ns[] = new int[1000];
 int count = 0;
@@ -267,18 +300,23 @@ if(jTextArea1.getText().equals(""))
     try {
 String m = jTextArea2.getText() + ".txt";
 File file = new File("C:/securednotes/" +m);
-
     BufferedWriter fileOut = new BufferedWriter(new FileWriter(file));
     String myString1 =jTextArea1.getText();
     String myString2 = myString1.replace("\r", "\n");
-    os = myString2.toCharArray();
-                for(int i =0 ; i< os.length;i++){
-ns[i] = os[i] ;
+    //os = myString2.toCharArray();
+//  byte[]  p = myString2.getBytes();
+  BigInteger bigInt = new BigInteger(myString2.getBytes());
+System.out.println(bigInt.toString());
+//String textBack = new String(bigInt.toByteArray());
+//System.out.println("And back = " + textBack);
+ 
 
-     //System.out.print(ns[i]);
-fileOut.write(Integer.toString(ns[i]));
-                }
 
+fileOut.write(bigInt.toString());
+
+     
+    
+    
      fileOut.close();
 
 
@@ -303,18 +341,57 @@ jTextArea1.setText(" ");
 jTextArea2.setText(" ");
     }
 
+
     @Action
-    public void newnote() {
+    public void openfile() {
+jFileChooser2 = new JFileChooser("C://securednotes");
+jFileChooser2.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int returnVal = jFileChooser2.showOpenDialog(this.getFrame());
 
+if (returnVal == JFileChooser.APPROVE_OPTION) {
+        File file = jFileChooser2.getSelectedFile();
+        // ... code that loads the contents of the file in the text area
+       BufferedReader br = null;
+ int a =0;
 
+		try {
+			String sCurrentLine;
+
+			br = new BufferedReader(new FileReader(file));
+
+			while ((sCurrentLine = br.readLine()) != null) {
+//				System.out.println(sCurrentLine);
+                                BigInteger bigInt = new BigInteger(sCurrentLine);
+                                String textBack = new String(bigInt.toByteArray());
+//System.out.println(textBack);
+                                jTextArea1.setText(textBack);
+
+                        }
+
+		} catch (IOException e) {
+		} finally {
+			try {
+				if (br != null)br.close();
+			} catch (IOException ex) {
+			}
+		
+
+                }
+    } else {
+        // ...
+    }
 
     }
+
+   
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JFileChooser jFileChooser2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
