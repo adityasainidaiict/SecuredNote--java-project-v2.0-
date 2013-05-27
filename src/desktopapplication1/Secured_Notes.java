@@ -28,6 +28,8 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * The application's main frame.
@@ -113,8 +115,10 @@ public class Secured_Notes extends FrameView {
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
@@ -162,7 +166,7 @@ public class Secured_Notes extends FrameView {
         } catch (IOException ex) {
         }
         mainPanel.add(jButton2);
-        jButton2.setBounds(220, 270, 109, 29);
+        jButton2.setBounds(400, 270, 100, 29);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setName("jScrollPane1"); // NOI18N
@@ -197,12 +201,6 @@ public class Secured_Notes extends FrameView {
         mainPanel.add(jScrollPane2);
         jScrollPane2.setBounds(10, 38, 90, 60);
 
-        jLabel2.setIcon(resourceMap.getIcon("jLabel2.icon")); // NOI18N
-        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
-        jLabel2.setName("jLabel2"); // NOI18N
-        mainPanel.add(jLabel2);
-        jLabel2.setBounds(10, 6, 90, 30);
-
         jButton3.setAction(actionMap.get("openfile")); // NOI18N
         jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
         jButton3.setName("jButton3"); // NOI18N
@@ -218,6 +216,29 @@ public class Secured_Notes extends FrameView {
         }
         mainPanel.add(jButton3);
         jButton3.setBounds(10, 170, 90, 30);
+
+        jButton4.setAction(actionMap.get("Delete")); // NOI18N
+        jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
+        jButton4.setName("jButton4"); // NOI18N
+        try {
+            Image img = ImageIO.read(getClass().getResource("resources/de.jpg"));
+            jButton4.setIcon(new ImageIcon(img));
+        } catch (IOException ex) {
+        }
+        mainPanel.add(jButton4);
+        jButton4.setBounds(210, 270, 90, 30);
+
+        jLabel2.setIcon(resourceMap.getIcon("jLabel2.icon")); // NOI18N
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
+        mainPanel.add(jLabel2);
+        jLabel2.setBounds(10, 6, 90, 30);
+
+        jLabel3.setIcon(resourceMap.getIcon("jLabel3.icon")); // NOI18N
+        jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
+        jLabel3.setName("jLabel3"); // NOI18N
+        mainPanel.add(jLabel3);
+        jLabel3.setBounds(0, 0, 1320, 620);
 
         menuBar.setName("menuBar"); // NOI18N
 
@@ -306,7 +327,7 @@ File file = new File("C:/securednotes/" +m);
     //os = myString2.toCharArray();
 //  byte[]  p = myString2.getBytes();
   BigInteger bigInt = new BigInteger(myString2.getBytes());
-System.out.println(bigInt.toString());
+//System.out.println(bigInt.toString());
 //String textBack = new String(bigInt.toByteArray());
 //System.out.println("And back = " + textBack);
  
@@ -343,16 +364,42 @@ jTextArea2.setText(" ");
 
 
     @Action
-    public void openfile() {
-jFileChooser2 = new JFileChooser("C://securednotes");
+    public void openfile() {int c =0;
+JPasswordField pf = new JPasswordField();
+JOptionPane.showConfirmDialog(null, pf, "Enter Password(max 6 char)", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+String pass = new String(pf.getPassword());
+try
+		{
+                    BufferedReader br = new BufferedReader(new FileReader("C:/securednotes/config.config"));
+			String sCurrentLine;
+
+			while ((sCurrentLine = br.readLine()) != null) {
+                             BigInteger bigInt = new BigInteger(sCurrentLine);
+                                String textBack = new String(bigInt.toByteArray());
+                            if(textBack.equals(pass)){ c=1;}
+                        else{
+                        JOptionPane.showMessageDialog(null, "Wrong Password", "Secure Note", JOptionPane.INFORMATION_MESSAGE);
+                        System.exit(0);
+                        }
+
+			}
+                
+		} catch (IOException e) {
+		}
+if(c==1){jFileChooser2 = new JFileChooser("C:/securednotes");
 jFileChooser2.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int returnVal = jFileChooser2.showOpenDialog(this.getFrame());
+ FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter(".txt files (*.txt)", "txt");
+           jFileChooser2.setFileFilter(xmlfilter);
+
+         jFileChooser2.setFileFilter(xmlfilter);
+
+int returnVal = jFileChooser2.showOpenDialog(this.getFrame());
 
 if (returnVal == JFileChooser.APPROVE_OPTION) {
         File file = jFileChooser2.getSelectedFile();
         // ... code that loads the contents of the file in the text area
        BufferedReader br = null;
- int a =0;
+
 
 		try {
 			String sCurrentLine;
@@ -360,12 +407,13 @@ if (returnVal == JFileChooser.APPROVE_OPTION) {
 			br = new BufferedReader(new FileReader(file));
 
 			while ((sCurrentLine = br.readLine()) != null) {
-//				System.out.println(sCurrentLine);
+//				System.out.println(sCurrentLine);//converting the string in file to big int and converting back.
                                 BigInteger bigInt = new BigInteger(sCurrentLine);
                                 String textBack = new String(bigInt.toByteArray());
 //System.out.println(textBack);
-                                jTextArea1.setText(textBack);
 
+                                jTextArea1.setText(textBack);
+                                jTextArea2.setText(file.getName().replace(".txt",""));
                         }
 
 		} catch (IOException e) {
@@ -374,14 +422,71 @@ if (returnVal == JFileChooser.APPROVE_OPTION) {
 				if (br != null)br.close();
 			} catch (IOException ex) {
 			}
-		
+
 
                 }
     } else {
         // ...
     }
+}
 
     }
+
+    @Action
+    public void Delete() {int c =0;
+JPasswordField pf = new JPasswordField();
+JOptionPane.showConfirmDialog(null, pf, "Enter Password(max 6 char)", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+String pass = new String(pf.getPassword());
+try
+		{
+                    BufferedReader br = new BufferedReader(new FileReader("C:/securednotes/config.config"));
+			String sCurrentLine;
+
+			while ((sCurrentLine = br.readLine()) != null) {
+                             BigInteger bigInt = new BigInteger(sCurrentLine);
+                                String textBack = new String(bigInt.toByteArray());
+                            if(textBack.equals(pass)){ c = 1;}
+                        else{
+                        JOptionPane.showMessageDialog(null, "Wrong Password", "Secure Note", JOptionPane.INFORMATION_MESSAGE);
+                        System.exit(0);
+                        }
+
+			}
+
+		} catch (IOException e) {
+		}
+if(c==1){jFileChooser2 = new JFileChooser("C://securednotes/");
+jFileChooser2.setFileSelectionMode(JFileChooser.FILES_ONLY);
+ FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter(".txt files (*.txt)", "txt");
+           jFileChooser2.setFileFilter(xmlfilter);
+
+         jFileChooser2.setFileFilter(xmlfilter);
+int returnVal = jFileChooser2.showOpenDialog(this.getFrame());
+
+if (returnVal == JFileChooser.APPROVE_OPTION) {
+        File file = jFileChooser2.getSelectedFile();
+        // ... code that loads the contents of the file in the text area
+
+ try{
+
+
+
+    		if(file.delete()){
+    JOptionPane.showMessageDialog(null,file.getName().replace(".txt", "") + " is deleted!" , "Secure Note", JOptionPane.INFORMATION_MESSAGE);
+
+                    //                    System.out.println(file.getName() + " is deleted!");
+    		}else{
+    			  JOptionPane.showMessageDialog(null,"Operation Failed", "Secure Note", JOptionPane.INFORMATION_MESSAGE);
+    		}
+
+    	}catch(Exception e){
+
+        }
+
+}
+
+        
+    }}
 
    
    
@@ -390,9 +495,11 @@ if (returnVal == JFileChooser.APPROVE_OPTION) {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFileChooser jFileChooser2;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;

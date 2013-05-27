@@ -4,10 +4,18 @@
 
 package desktopapplication1;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.math.BigInteger;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
+import sun.net.www.content.text.plain;
 
 /**
  * The main class of the application.
@@ -18,9 +26,45 @@ public class DesktopApplication1 extends SingleFrameApplication {
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
-        show(new Secured_Notes(this));
-    }
+        File file = new File("C:/securednotes/config.config");
+        JPasswordField pf = new JPasswordField();
+        if (!file.exists()){
+        
+        JOptionPane.showConfirmDialog(null, pf, "Set Password(max 6 char)", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    try {
+ 
+			String content = new String(pf.getPassword());
+                         BigInteger bigInt = new BigInteger(content.getBytes());
 
+			if(content.equals("")){
+                        JOptionPane.showMessageDialog(null, "Not a valid password", "Secure Note", JOptionPane.INFORMATION_MESSAGE);
+                        System.exit(0);
+                        }
+ 
+			// if file doesnt exists, then create it
+
+				file.createNewFile();
+		FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(bigInt.toString());
+			bw.close();
+ 
+			
+		} catch (IOException e) {
+		}
+        JOptionPane.showMessageDialog(null, "Now this password will be asked when you try to read a note", "Secure Note", JOptionPane.INFORMATION_MESSAGE);
+        show(new Secured_Notes(this));}
+        else{
+        show(new Secured_Notes(this));}
+
+        
+
+        
+            }
+
+
+    
+    
     /**
      * This method is to initialize the specified window by injecting resources.
      * Windows shown in our application come fully initialized from the GUI
