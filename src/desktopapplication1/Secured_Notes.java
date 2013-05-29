@@ -130,16 +130,13 @@ public class Secured_Notes extends FrameView {
         mainPanel.setBackground(resourceMap.getColor("mainPanel.background")); // NOI18N
         mainPanel.setMaximumSize(new java.awt.Dimension(350, 250));
         mainPanel.setMinimumSize(new java.awt.Dimension(300, 200));
-        mainPanel.setName("mainPanel"); // NOI18N
         mainPanel.setPreferredSize(new java.awt.Dimension(450, 300));
-        mainPanel.setLayout(null);
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(desktopapplication1.DesktopApplication1.class).getContext().getActionMap(Secured_Notes.class, this);
         jButton1.setAction(actionMap.get("click")); // NOI18N
         jButton1.setBackground(resourceMap.getColor("jButton1.background")); // NOI18N
         jButton1.setForeground(resourceMap.getColor("jButton1.foreground")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
         jButton1.setSelectedIcon(resourceMap.getIcon("jButton1.selectedIcon")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,25 +148,19 @@ public class Secured_Notes extends FrameView {
             jButton1.setIcon(new ImageIcon(img));
         } catch (IOException ex) {
         }
-        mainPanel.add(jButton1);
-        jButton1.setBounds(10, 270, 108, 27);
 
         jButton2.setAction(actionMap.get("reset")); // NOI18N
         jButton2.setBackground(resourceMap.getColor("jButton2.background")); // NOI18N
         jButton2.setForeground(resourceMap.getColor("jButton2.foreground")); // NOI18N
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-        jButton2.setName("jButton2"); // NOI18N
         jButton2.setSelectedIcon(resourceMap.getIcon("jButton2.selectedIcon")); // NOI18N
         try {
             Image img = ImageIO.read(getClass().getResource("resources/re.jpg"));
             jButton2.setIcon(new ImageIcon(img));
         } catch (IOException ex) {
         }
-        mainPanel.add(jButton2);
-        jButton2.setBounds(400, 270, 100, 29);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         jTextArea1.setBackground(resourceMap.getColor("jTextArea1.background")); // NOI18N
         jTextArea1.setColumns(5);
@@ -179,15 +170,10 @@ public class Secured_Notes extends FrameView {
         jTextArea1.setRows(5);
         jTextArea1.setAutoscrolls(false);
         jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTextArea1.setName("jTextArea1"); // NOI18N
         jTextArea1.setPreferredSize(new java.awt.Dimension(200, 150));
         jScrollPane1.setViewportView(jTextArea1);
 
-        mainPanel.add(jScrollPane1);
-        jScrollPane1.setBounds(112, 13, 460, 230);
-
         jScrollPane2.setHorizontalScrollBar(null);
-        jScrollPane2.setName("jScrollPane2"); // NOI18N
 
         jTextArea2.setBackground(resourceMap.getColor("jTextArea2.background")); // NOI18N
         jTextArea2.setColumns(10);
@@ -195,15 +181,10 @@ public class Secured_Notes extends FrameView {
         jTextArea2.setForeground(resourceMap.getColor("jTextArea1.foreground"));
         jTextArea2.setRows(3);
         jTextArea2.setAlignmentY(0.1F);
-        jTextArea2.setName("jTextArea2"); // NOI18N
         jScrollPane2.setViewportView(jTextArea2);
-
-        mainPanel.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 38, 90, 60);
 
         jButton3.setAction(actionMap.get("openfile")); // NOI18N
         jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
-        jButton3.setName("jButton3"); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -214,45 +195,78 @@ public class Secured_Notes extends FrameView {
             jButton3.setIcon(new ImageIcon(img));
         } catch (IOException ex) {
         }
-        mainPanel.add(jButton3);
-        jButton3.setBounds(10, 170, 90, 30);
 
         jButton4.setAction(actionMap.get("Delete")); // NOI18N
         jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
-        jButton4.setName("jButton4"); // NOI18N
         try {
             Image img = ImageIO.read(getClass().getResource("resources/de.jpg"));
             jButton4.setIcon(new ImageIcon(img));
         } catch (IOException ex) {
         }
-        mainPanel.add(jButton4);
-        jButton4.setBounds(210, 270, 90, 30);
 
         jLabel2.setIcon(resourceMap.getIcon("jLabel2.icon")); // NOI18N
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
-        jLabel2.setName("jLabel2"); // NOI18N
-        mainPanel.add(jLabel2);
-        jLabel2.setBounds(10, 6, 90, 30);
 
         jLabel3.setIcon(resourceMap.getIcon("jLabel3.icon")); // NOI18N
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
-        jLabel3.setName("jLabel3"); // NOI18N
-        mainPanel.add(jLabel3);
-        jLabel3.setBounds(0, 0, 1320, 620);
 
-        menuBar.setName("menuBar"); // NOI18N
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(282, 282, 282)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1320, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(270, 270, 270)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
-        helpMenu.setName("helpMenu"); // NOI18N
 
         aboutMenuItem.setAction(actionMap.get("showAboutBox")); // NOI18N
         aboutMenuItem.setForeground(resourceMap.getColor("aboutMenuItem.foreground")); // NOI18N
-        aboutMenuItem.setName("aboutMenuItem"); // NOI18N
+        aboutMenuItem.setText(resourceMap.getString("aboutMenuItem.text")); // NOI18N
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
-
-        jDialog1.setName("jDialog1"); // NOI18N
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -265,9 +279,6 @@ public class Secured_Notes extends FrameView {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        jSeparator1.setName("jSeparator1"); // NOI18N
-
-        jFileChooser2.setName("jFileChooser2"); // NOI18N
         jFileChooser2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFileChooser2ActionPerformed(evt);
@@ -277,6 +288,7 @@ public class Secured_Notes extends FrameView {
         setComponent(mainPanel);
         setMenuBar(menuBar);
     }// </editor-fold>//GEN-END:initComponents
+
 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -445,7 +457,7 @@ try
 			while ((sCurrentLine = br.readLine()) != null) {
                              BigInteger bigInt = new BigInteger(sCurrentLine);
                                 String textBack = new String(bigInt.toByteArray());
-                            if(textBack.equals(pass)){ c = 1;}
+                            if(textBack.equals(pass)){ c = 1;jTextArea1.setText("");jTextArea2.setText("");}
                         else{
                         JOptionPane.showMessageDialog(null, "Wrong Password", "Secure Note", JOptionPane.INFORMATION_MESSAGE);
                         System.exit(0);

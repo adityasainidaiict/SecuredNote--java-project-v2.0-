@@ -4,6 +4,9 @@
 
 package desktopapplication1;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.Window;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -16,6 +19,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.Timer;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -26,9 +30,19 @@ import javax.swing.JOptionPane;
 public class DesktopApplication1View extends FrameView {
 
     public DesktopApplication1View(SingleFrameApplication app) {
-        super(app);
 
-        initComponents();
+        super(app);
+        DesktopApplication1.getApplication().getMainFrame().setResizable(false);
+
+Toolkit kit = Toolkit.getDefaultToolkit();
+Image frameIcon = kit.getImage("C:/Users/aditya/Documents/NetBeansProjects/DesktopApplication1/src/desktopapplication1/resources/de.jpg");
+DesktopApplication1.getApplication().getMainFrame().setIconImage(frameIcon);
+Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("resources/no.jpg"));
+        DesktopApplication1.getApplication().getMainFrame().setIconImage(icon);
+DesktopApplication1.getApplication().getMainFrame().pack();
+
+initComponents();
+
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();

@@ -4,6 +4,8 @@
 
 package desktopapplication1;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,6 +13,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import org.jdesktop.application.Application;
@@ -26,7 +30,7 @@ public class DesktopApplication1 extends SingleFrameApplication {
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
-        File file = new File("C:/securednotes/config.config");
+          File file = new File("C:/securednotes/config.config");
         JPasswordField pf = new JPasswordField();
         if (!file.exists()){
         
@@ -84,17 +88,17 @@ public class DesktopApplication1 extends SingleFrameApplication {
     /**
      * Main method launching the application.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         File file = new File("C:\\securednotes");
-	if (!file.exists()) {
+
+        if (!file.exists()) {
 		if (file.mkdir()) {
-			//System.out.println("Directory is created!");
+            			//System.out.println("Directory is created!");
 		} else {
 			//System.out.println("Failed to create directory!");
 
                 }
 	}
-
         launch(DesktopApplication1.class, args);
     }
 }
